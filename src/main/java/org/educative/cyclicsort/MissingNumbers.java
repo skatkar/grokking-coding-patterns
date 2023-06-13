@@ -13,7 +13,8 @@ public class MissingNumbers {
     public static List<Integer> firstKMissingNumbers(int[] nums, int k) {
 
         int i=0;
-        List<Integer> result = new ArrayList<>();
+        List<Integer> missingNumbers = new ArrayList<>();
+        List<Integer> extraNumbers = new ArrayList<>();
 
         while(i < nums.length) {
             if(nums[i] > 0 && nums[i] < nums.length && nums[i] != nums[nums[i] - 1]){
@@ -24,12 +25,22 @@ public class MissingNumbers {
 
 
         for(i=0; i < nums.length; i++) {
-            if(nums[i] != i + 1 && result.size() <= k){
-                result.add(i+1);
+            if(nums[i] != i + 1) {
+                missingNumbers.add(i + 1);
+                extraNumbers.add(nums[i]);
             }
         }
 
-        return result;
+        for(i=1; missingNumbers.size() < k; i++) {
+            int candidateNumber = i + nums.length;
+
+            // If the array doesn't contain this number originally, add it to the missing numbers list
+            if(!extraNumbers.contains(candidateNumber)) {
+                missingNumbers.add(candidateNumber);
+            }
+        }
+
+        return missingNumbers;
     }
 
     private static void swap(int[] arr, int i, int j) {

@@ -1,6 +1,17 @@
 package org.educative.cyclicsort;
 
 public class FindCorruptPair {
+    /**
+     * We are given an unsorted array, nums, with n elements and each element is in the range
+     * [1,n] inclusive.The array originally contained all the elements from 1 to n
+     *  but due to a data error, one of the numbers is duplicated, which causes another number missing.
+     *  Find and return the corrupt pair (missing, duplicated).
+     *  Constraints:
+     *  1 <= n <= 10^3
+     *  1 <= nums[i] <= n
+     * @param nums
+     * @return
+     */
     public static int[] findCorruptPair(int[] nums) {
 
         int i=0;
@@ -13,7 +24,7 @@ public class FindCorruptPair {
 
         for(i=0; i < nums.length; i++) {
             if(nums[i] != i + 1) {
-                return new int[]{i+1, nums[i]}; // nums[nums[i]]
+                return new int[]{i+1, nums[i]};// 0 - missing 1 - duplicate
             }
         }
 
