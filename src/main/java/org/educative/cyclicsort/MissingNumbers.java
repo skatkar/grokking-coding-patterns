@@ -24,7 +24,7 @@ public class MissingNumbers {
         }
 
 
-        for(i=0; i < nums.length; i++) {
+        for(i=0; i < nums.length && missingNumbers.size() < k; i++) {
             if(nums[i] != i + 1) {
                 missingNumbers.add(i + 1);
                 extraNumbers.add(nums[i]);
