@@ -4,6 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MissingNumbers {
+    /**
+     * Find the first k missing positive numbers
+     * @param nums
+     * @param k
+     * @return
+     */
     public static List<Integer> firstKMissingNumbers(int[] nums, int k) {
 
         int i=0;
