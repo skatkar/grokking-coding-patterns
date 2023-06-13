@@ -3,6 +3,11 @@ package org.educative.islands;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * Number of islands :<a href="https://www.designgurus.io/course-play/grokking-the-coding-interview/doc/6388cbb0765bb2154037ce84">...</a>
+ * TC : O(m * n)
+ * SC : O(min(m * n))
+ */
 public class NumberOfIslands {
     static int rows;
     static int columns;
