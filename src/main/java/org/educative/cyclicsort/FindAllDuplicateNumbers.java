@@ -5,6 +5,7 @@ import java.util.List;
 
 /**
  * Find all duplicate numbers <a href="https://www.designgurus.io/course-play/grokking-the-coding-interview/doc/6393b0a334689e585e94a29a">...</a>
+ * Leetcode : https://leetcode.com/problems/find-all-duplicates-in-an-array/
  */
 public class FindAllDuplicateNumbers {
     public static List<Integer> findNumbers(int[] nums) {
