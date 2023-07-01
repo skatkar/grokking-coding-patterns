@@ -36,4 +36,32 @@ public class ClosestPoints {
 
         return result;
     }
+
+    public static List<Point> kClosest2(Point[] points, int k) {
+        PriorityQueue<Point> maxHeap = new PriorityQueue<>((a,b) -> findDistanceFromZero(b.x, b.y) - findDistanceFromZero(a.x, a.y));
+        List<Point> result = new ArrayList<>();
+
+        int i=0;
+        while(i < k) {
+            maxHeap.add(points[i]);
+            i++;
+        }
+
+        while(i < points.length) {
+            Point current = points[i];
+            Point top = maxHeap.peek();
+            if(findDistanceFromZero(current.x, current.y) < findDistanceFromZero(top.x, top.y)) {
+                maxHeap.poll();
+                maxHeap.add(current);
+            }
+        }
+
+        while(!maxHeap.isEmpty()) {
+            result.add(maxHeap.poll());
+        }
+
+        return result;
+    }
+
+
 }

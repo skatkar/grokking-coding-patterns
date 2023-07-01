@@ -4,6 +4,14 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class FloodFill {
+    /**
+     * Question : <a href="https://www.designgurus.io/course-play/grokking-the-coding-interview/doc/6388e8887b259e5c9e8c0274">...</a>
+     * @param matrix
+     * @param x
+     * @param y
+     * @param newColor
+     * @return matrix with changed color
+     */
     public static int[][] floodFill(int[][] matrix, int x, int y, int newColor) {
         if (matrix == null || matrix.length == 0 || matrix[x][y] == newColor) return matrix;
 
