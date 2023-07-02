@@ -1,6 +1,12 @@
 package org.educative.binarysearch;
 
 public class OrderAgnosticSearch {
+    /**
+     * Question : <a href="https://www.designgurus.io/course-play/grokking-the-coding-interview/doc/639f1a8b44223ca42ca4a723">...</a>
+     * @param arr
+     * @param key
+     * @return
+     */
     public static int search(int[] arr, int key) {
         if(arr == null || arr.length == 0) return 0;
 
