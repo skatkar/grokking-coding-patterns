@@ -9,10 +9,6 @@ class Solution {
     PriorityQueue<Integer> minHeap;
 
     public Solution() {
-        initializeHeaps();
-    }
-
-    private void initializeHeaps() {
         this.minHeap = new PriorityQueue<>();
         this.maxHeap = new PriorityQueue<>(Comparator.reverseOrder());
     }
