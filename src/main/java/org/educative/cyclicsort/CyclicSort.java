@@ -9,12 +9,11 @@ public class CyclicSort {
     public static void sort(int[] nums) {
         int i = 0;
         while (i < nums.length) {
-            int j = nums[i] - 1;
-            if (nums[i] != i + 1)
-                swap(nums, i, j);
-            // change the value of i only if nums[i] == i + 1 as per the question
-            else
-                i++;
+          int j = nums[i] - 1;
+          if (nums[i] != nums[j])
+            swap(nums, i, j);
+          else
+            i++;
         }
     }
 
