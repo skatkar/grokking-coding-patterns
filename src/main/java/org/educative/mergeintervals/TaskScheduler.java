@@ -2,6 +2,9 @@ package org.educative.mergeintervals;
 
 import java.util.*;
 
+/**
+* Question : https://leetcode.com/problems/task-scheduler/
+*/
 public class TaskScheduler {
     public int leastInterval(char[] tasks, int k) {
         if(tasks == null || tasks.length == 0) return 0;
