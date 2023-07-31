@@ -36,4 +36,29 @@ public class Leetcode1209 {
 
         return result.reverse().toString();
     }
+
+    public String removeDuplicates2(String s, int k) {
+        if(s == null || s.length() == 0) return s;
+        StringBuilder sb = new StringBuilder();
+
+        Stack<int[]> stack = new Stack<>();
+        for(char ch : s.toCharArray()) {
+            if(!stack.isEmpty() && stack.peek()[0] == ch) {
+                stack.peek()[1]++;
+            }else {
+                stack.push(new int[]{ch, 1});
+            }
+
+            if(stack.peek()[0] == k){
+                stack.pop();
+            }
+        }
+
+        while(!stack.isEmpty()) {
+            int[] pop = stack.pop();
+            sb.append(String.valueOf((char)pop[0]).repeat(pop[1]));
+        }
+
+        return sb.reverse().toString();
+    }
 }
