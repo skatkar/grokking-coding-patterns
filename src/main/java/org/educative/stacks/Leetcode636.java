@@ -1,8 +1,29 @@
 package org.educative.stacks;
 
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
+
+class Event {
+    private int id;
+    private boolean isStart;
+    private int time;
+
+    public Event(String content) {
+        String[] strs = content.split(":");
+        this.id = Integer.valueOf(strs[0]);
+        this.isStart = strs[1].equals("start");
+        this.time = Integer.valueOf(strs[2]);
+    }
+    public int getId(){
+        return this.id;
+    }
+    public boolean getIsStart(){
+        return this.isStart;
+    }
+    public int getTime(){
+        return this.time;
+    }
+}
 public class Leetcode636 {
 
     // Sample input: n = 2, logs = ["0:start:0","1:start:2","1:end:5","0:end:6"]
@@ -41,6 +62,30 @@ public class Leetcode636 {
         }
 
 
+        return result;
+    }
+
+    public static List<Integer> exclusiveTime2(int n, List<String> events) {
+        Deque<Event> stack = new ArrayDeque<>();
+        List<Integer> result = new ArrayList<>(Collections.nCopies(n, 0));
+        for (String content: events) {
+            // Extract the log details from the content(string)
+            Event event = new Event(content);
+            if (event.getIsStart()) {
+                // Push the event details to the stack
+                stack.push(event);
+            } else {
+                // Pop the log details from the stack
+                Event top = stack.pop();
+                // Add the execution time of the current function in the actual result
+                result.set(top.getId(), result.get(top.getId()) + (event.getTime() - top.getTime() + 1));
+                // If the stack is not empty, subtract the current child function execution time
+                // from the parent function
+                if (!stack.isEmpty()) {
+                    result.set(stack.peek().getId(), result.get(stack.peek().getId()) - (event.getTime() - top.getTime() + 1));
+                }
+            }
+        }
         return result;
     }
 }
