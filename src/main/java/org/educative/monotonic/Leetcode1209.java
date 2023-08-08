@@ -49,7 +49,7 @@ public class Leetcode1209 {
                 stack.push(new int[]{ch, 1});
             }
 
-            if(stack.peek()[0] == k){
+            if(stack.peek()[1] == k){
                 stack.pop();
             }
         }
