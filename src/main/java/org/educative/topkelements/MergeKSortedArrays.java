@@ -15,6 +15,9 @@ class Entry {
     }
 }
 public class MergeKSortedArrays {
+    //Time: O(n * log(k))
+    //Space: O(k)
+
     public static void main(String[] args) {
         MergeKSortedArrays question = new MergeKSortedArrays();
         int[][] input = new int[][]{
