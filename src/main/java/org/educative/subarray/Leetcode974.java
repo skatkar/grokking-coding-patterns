@@ -14,18 +14,20 @@ public class Leetcode974 {
         for (int num : nums) {
             rSum += num;
 
-            // It is because we're looking for a "valid mod" index.
-            // Ex: 4 % 5 = 4, 9 % 5 = 4. So, how many ever 5s or multiples of 5s you add to the number, it is going to give you the same mod.
-            // Similarly, in the negative numbers band, you would add 5 to get the first positive mod value. Also, in Java, -4 % 5 = -4 and not 4
-
-            // For a given k, valid mods are: 0,1,2,... k - 1
             int mod = rSum % k;
+
+            // We're looking for a "valid mod" index.
+            // Ex: 4 % 5 = 4, 9 % 5 = 4. So, how many 5s or multiples of 5s you add to the number will give you the same mod.
+            // Similarly, in the negative numbers band, you would add 5 to get the first positive mod value. Also, in Java, -4 % 5 = -4 and not 4
+            
+            // For a given k, valid mods are: 0,1,2,... k - 1
+            if(mod < 0) mod += k;
 
             if (map.containsKey(mod)) {
                 total += map.get(mod);
             }
 
-            map.put(rSum, map.getOrDefault(rSum, 0) + 1);
+            map.put(mod, map.getOrDefault(mod, 0) + 1);
         }
 
         return total;
