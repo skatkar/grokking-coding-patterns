@@ -28,25 +28,31 @@ public class Leetcode815 {
             int station = poll[0];
             int busesTaken = poll[1];
 
+            // busesTaken represents the level in BFS traversal
             if(station == target)
                 return busesTaken;
 
-            if(stationToBusNumber.containsKey(station)){
-                List<Integer> busNumbers = stationToBusNumber.get(station);
-                for(int busNumber : busNumbers){
-                    if(!visited.contains(busNumber)){
-                        for(int s : routes[busNumber]){
-                            queue.add(new int[]{s, busesTaken + 1});
-                        }
+            List<Integer> busNumbers = stationToBusNumber.get(station);
+
+            // for each bus number
+            // (all routes array element represent the busNumber),add the station and the buses
+            // taken to reach that station to the queue.
+            for(int busNumber : busNumbers){
+                if(!visited.contains(busNumber)){
+                    for(int s : routes[busNumber]){
+                        queue.add(new int[]{s, busesTaken + 1});
                     }
-                    visited.add(busNumber);
                 }
+                visited.add(busNumber);
             }
+
         }
 
         return -1;
     }
 
+    // create a mapping of station to bus busNumber
+    // This map represents the buses that can travel through this station
     private Map<Integer, List<Integer>> generateMap(int[][] routes){
         Map<Integer, List<Integer>> stationToBusNumber = new HashMap<>();
 
