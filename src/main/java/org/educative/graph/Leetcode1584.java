@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+// This covers the optimized version of Prim's algorithm
 public class Leetcode1584 {
     public int minCostConnectPoints(int[][] points) {
         Set<Integer> visited = new HashSet<>();

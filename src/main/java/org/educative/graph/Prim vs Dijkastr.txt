@@ -1,0 +1,3 @@
+1. Dijkstra’s algorithm finds the shortest path, but Prim’s algorithm finds the MST.
+2. Dijkstra’s algorithm can work on both directed and undirected graphs, but Prim’s algorithm only works on undirected graphs.
+3. Prim’s algorithm can handle negative-edge weights, but Dijkstra’s algorithm may fail to accurately compute distances if at least one negative edge weight exists.
