@@ -26,7 +26,7 @@ public class Leetcode743 {
         Map<Integer, List<Pair>> map = new HashMap<>();
         for(int[] time : times){
             map.putIfAbsent(time[0], new ArrayList<>());
-            // source -> List of <time, destination>
+            // source -> List of pair of <time, destination>
             map.get(time[0]).add(new Pair(time[2], time[1]));
         }
 
@@ -37,17 +37,17 @@ public class Leetcode743 {
 
         while(!pq.isEmpty()){
             Pair pair = pq.poll();
-            int currDist = pair.time;
+            int currTime = pair.time;
             int currNode = pair.node;
 
             if(visited.contains(currNode)) continue;
             visited.add(currNode);
-            result = currDist;
+            result = currTime;
             n--;
 
             if(map.containsKey(currNode)){
                 for(Pair next : map.get(currNode)){
-                    pq.add(new Pair(currDist + next.time, next.node));
+                    pq.add(new Pair(currTime + next.time, next.node));
                 }
             }
         }
