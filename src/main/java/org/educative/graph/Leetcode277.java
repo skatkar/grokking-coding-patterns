@@ -1,7 +1,9 @@
 package org.educative.graph;
 
 abstract class Relation {
-        abstract boolean knows(int a, int b);
+    boolean knows(int a, int b){
+        return true;
+    }
 }
 public class Leetcode277 extends Relation {
     public int findCelebrity(int n) {
