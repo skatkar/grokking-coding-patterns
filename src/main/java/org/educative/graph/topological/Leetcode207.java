@@ -1,22 +1,32 @@
-package org.educative.graph;
+package org.educative.graph.topological;
 
 import java.util.*;
-import java.util.stream.IntStream;
 
-public class Leetcode210 {
+public class Leetcode207 {
     Map<Integer, List<Integer>> map;
     int[] inDegrees;
-    public int[] findOrder(int numCourses, int[][] prerequisites) {
-        if(prerequisites == null) return new int[0];
-        if(prerequisites.length == 0){
-            return IntStream.range(0, numCourses)
-                    .toArray();
-        }
+
+    public static void main(String[] args) {
+        Leetcode207 question = new Leetcode207();
+        boolean canFinish = question.canFinish(5, new int[][]{
+                {1, 4},
+                {2, 4},
+                {3, 1},
+                {3, 2}
+        });
+
+        System.out.println("canFinish = " + canFinish);
+    }
+
+    // TC : O(V + E)
+    // SC : O(V + E)
+    public boolean canFinish(int numCourses, int[][] prerequisites) {
+        if(prerequisites == null || prerequisites.length == 0) return true;
 
         map = new HashMap<>();
         inDegrees = new int[numCourses];
 
-        List<Integer> countOfCoursesCanComplete = new ArrayList<>();
+        int countOfCoursesCanComplete = 0;
         Queue<Integer> courseQueue = new LinkedList<>();
 
         buildGraph(prerequisites);
@@ -24,11 +34,11 @@ public class Leetcode210 {
         for(int course=0; course < numCourses; course++){
             if(inDegrees[course] == 0){
                 courseQueue.add(course);
-                countOfCoursesCanComplete.add(course);
+                countOfCoursesCanComplete++;
             }
         }
 
-        if(courseQueue.isEmpty()) return new int[0];
+        if(courseQueue.isEmpty()) return false;
 
         while(!courseQueue.isEmpty()){
             int currCourse = courseQueue.poll();
@@ -38,15 +48,13 @@ public class Leetcode210 {
                     inDegrees[neighbor]--;
                     if(inDegrees[neighbor] == 0){
                         courseQueue.add(neighbor);
-                        countOfCoursesCanComplete.add(neighbor);
+                        countOfCoursesCanComplete++;
                     }
                 }
             }
         }
 
-        return countOfCoursesCanComplete.size() == numCourses ?
-                countOfCoursesCanComplete.stream().mapToInt(Integer::intValue).toArray() :
-                new int[0];
+        return countOfCoursesCanComplete == numCourses;
     }
 
     private void buildGraph(int[][] prerequisites) {

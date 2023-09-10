@@ -1,4 +1,4 @@
-package org.educative.graph;
+package org.educative.graph.topological;
 
 import java.util.*;
 import java.util.stream.Collectors;
