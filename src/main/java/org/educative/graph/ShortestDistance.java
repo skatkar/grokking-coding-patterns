@@ -17,6 +17,7 @@ public class ShortestDistance {
     }
 
     // Given an (unweighted) connected graph, return the length of the shortest path between two nodes A and B, in terms of the number of edges.
+    // Question : https://algo.monster/problems/shortest_path_unweight
     public static int bfs(Node root, int target) {
         Queue<Node> queue = new LinkedList<>();
         queue.add(root);
