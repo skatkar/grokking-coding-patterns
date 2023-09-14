@@ -12,7 +12,8 @@ public class Leetcode277 extends Relation {
             if(knows(celeb, i))
                 celeb = i;
         }
-        // So far, we assumed someone to be a celebrity. But we did not check the reverse i.e. for celeb as 2, we didn't check whether 3,4,5 know 2 or not.
+        // So far, we assumed someone to be a celebrity. But we did not check the reverse
+        // i.e. for celeb as 2, we didn't check whether 3,4,5 know 2 or not.
 
         for(int i=0; i < n; i++){
             if(i < celeb){
