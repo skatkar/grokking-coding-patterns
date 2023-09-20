@@ -1,4 +1,4 @@
-package org.educative.graph.djikstras.practice;
+package org.educative.graph.practice;
 
 import java.util.*;
 
