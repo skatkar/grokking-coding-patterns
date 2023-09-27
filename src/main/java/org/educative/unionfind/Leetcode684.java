@@ -16,6 +16,8 @@ public class Leetcode684 {
     // SC : O(N)
     public int[] findRedundantConnection(int[][] edges) {
         int n = edges.length;
+
+        // number of edges is equal to the number of nodes
         int[] parents = new int[n + 1];
         Arrays.fill(parents, -1);
 
@@ -38,7 +40,13 @@ public class Leetcode684 {
     private void union(int[] parents, int nodeA, int nodeB) {
         if(parents[nodeB] < parents[nodeA])
             union(parents, nodeB, nodeA);
+
+        // Both of these approaches will work.Path compression is optimized one for the lookup
+        // Try this example : [[9,10],[5,8],[2,6],[1,5],[3,8],[4,9],[8,10],[4,10],[6,8],[7,9]] to understand it better
+        // UnionFind by rank
         parents[nodeB] = nodeA;
+        // path compression technique
+        //parents[nodeB] = find(parents,nodeA);
     }
 
     private int find(int[] parents, int node) {
