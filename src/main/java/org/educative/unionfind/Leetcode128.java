@@ -4,12 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Leetcode128 {
-    public static void main(String[] args) {
-        Leetcode128 question = new Leetcode128();
-        int longestConsecutive = question.longestConsecutive(new int[]{100, 4, 200, 1, 3, 2});
-        System.out.println("longestConsecutive = " + longestConsecutive);
-    }
-
     public int longestConsecutive(int[] nums) {
         if(nums == null || nums.length == 0) return 0;
         UnionFind uf = new UnionFind(nums);
@@ -53,11 +47,11 @@ public class Leetcode128 {
             if(parentA == parentB) return;
 
             if(size.get(parentB) < size.get(parentA)){
-                parent.put(parentB, find(parentA));
+                parent.put(parentB, parentA);
                 size.put(parentA, size.get(parentA) + size.get(parentB));
                 maxLength = Math.max(maxLength, size.get(parentA));
             }else {
-                parent.put(parentA, find(parentB));
+                parent.put(parentA, parentB);
                 size.put(parentB, size.get(parentB) + size.get(parentA));
                 maxLength = Math.max(maxLength, size.get(parentB));
             }
