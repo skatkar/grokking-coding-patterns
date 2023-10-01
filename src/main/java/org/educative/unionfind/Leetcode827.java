@@ -64,6 +64,12 @@ public class Leetcode827 {
                         int neighborPosition = neighborX * columns + neighborY;
                         if(neighborX >= 0 && neighborX < rows && neighborY >= 0 && neighborY < columns && dsu.isLand(neighborPosition)) {
                             int adjacentComponent = dsu.find(neighborPosition);
+                            // It might happen that we come across the same island more than once.
+                            // Collect the representative. The set will avoid the duplicates.
+                            // For example,
+                            // 1 1 1
+                            // 1 0 1
+                            // 1 1 1
                             ulp.add(adjacentComponent);
                         }
                     }
@@ -89,34 +95,22 @@ public class Leetcode827 {
             parents = new int[rows * columns];
             size = new int[rows * columns];
 
-
             Arrays.fill(parents, -1);
 
+            // If it is a land then mark its parent as itself
+            // So, the size will be non-zero
             for(int i=0; i < rows; i++){
                 for(int j=0; j < columns; j++){
                     if(grid[i][j] == 1) {
-                        addLand(i * columns + j);
-                        size[i * columns + j]++;
+                        parents[i * columns + j] = i * columns + j;
+                        size[i * columns + j] = 1;
                     }
                 }
             }
         }
 
-        public void addLand(int landPosition){
-            // We might get the same x,y coordinates more than once
-            // This will work as a "visited" array
-            if(parents[landPosition] >= 0)
-                return;
-            parents[landPosition] = landPosition;
-
-        }
-
         public boolean isLand(int landPosition){
             return parents[landPosition] != -1;
-        }
-
-        public int[] getParents(){
-            return parents;
         }
 
         public int find(int landPosition){
