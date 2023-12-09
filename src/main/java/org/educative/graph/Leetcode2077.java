@@ -23,6 +23,9 @@ public class Leetcode2077 {
             Set<Integer> room2Neighbors = map.get(room2);
 
             // Find the intersection
+            // eg. 1 - [3]
+            //     2 - [3]
+            // That means there is an edge  1 -> 2 -> 3. So we got one cycle
             if(room1Neighbors != null && room2Neighbors != null)
                 count += room1Neighbors.stream().filter(room2Neighbors::contains).count();
         }
