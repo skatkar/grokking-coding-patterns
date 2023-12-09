@@ -30,6 +30,11 @@ public class Leetcode2077 {
         return count;
     }
 
+    /*
+    Note - Even though the graph given in the problem is undirected we create a directed graph by creating an edge from smaller number to higher number (and not reverse).
+    This avoids generating duplicate cycles and makes the graph smaller. If an undirected graph is used then the final result will need to be divided by 3 because we will count the same cycle three times (one from each vertex of the cycle).
+    Also, note that we don't need to use the input param n anywhere.
+    * */
     private void buildGraph(int[][] corridors){
         for(int[] corridor : corridors) {
             int room1 = corridor[0];
