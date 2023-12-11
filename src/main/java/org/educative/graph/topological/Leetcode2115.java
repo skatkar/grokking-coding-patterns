@@ -10,9 +10,10 @@ public class Leetcode2115 {
 
     public static void main(String[] args) {
         Leetcode2115 question = new Leetcode2115();
-        List<String> allRecipes = question.findAllRecipes(new String[]{"bread", "Sandwich"},
+        List<String> allRecipes = question.findAllRecipes(new String[]{"bread", "sandwich", "burger"},
                 List.of(Arrays.asList("yeast", "flour"),
-                        Arrays.asList("bread", "meat")),
+                        Arrays.asList("bread", "meat"),
+                        Arrays.asList("sandwich", "meat", "bread")),
                 new String[]{"yeast", "flour", "meat"});
 
         System.out.println("allRecipes = " + allRecipes);
@@ -53,7 +54,8 @@ public class Leetcode2115 {
     }
 
     // We're building a dependency graph of ingredients to recipes where the ingredient is not yet available / not in the supplies.
-    // inDegree map will hold the recipe, and its dependency count
+    // inDegree map will hold the recipe, and its dependency counts
+    // If the ingredient has no dependency, then its dependency count will be 0.
     private void buildGraph(String[] recipes, List<List<String>> ingredients, String[] supplies){
         Set<String> availableSupply = Stream.of(supplies).collect(Collectors.toSet());
         for(int recipe=0; recipe < recipes.length; recipe++){
