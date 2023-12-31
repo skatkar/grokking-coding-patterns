@@ -6,7 +6,7 @@ import java.util.List;
 
 public class TreePathSumII {
     // TC: The time complexity of the above algorithm is O(N^2), where ‘N’ is the total number of nodes in the tree.
-    // This is due to the fact that we traverse each node once (which will take O(N)), and for every leaf node, we might have to store its path (by making a copy of the current path) which will take O(N).
+    // This is because we traverse each node once (which will take O(N)), and for every leaf node, we might have to store its path (by making a copy of the current path) which will take O(N).
     // SC: O(n log n)
     // Detailed Explanation : https://www.designgurus.io/course-play/grokking-the-coding-interview/doc/63dd748dc496b56f43554c4e
     public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
