@@ -28,4 +28,25 @@ public class Leetcode78 {
 
         return setsList;
     }
+
+    public List<List<Integer>> subsets(int[] nums) {
+        List<List<Integer>> subsets = new ArrayList<>();
+        generateSubset(0, nums, new ArrayList<>(), subsets);
+        return subsets;
+    }
+
+    private void generateSubset(int index, int[] nums, List<Integer> subset, List<List<Integer>> subsets) {
+        if(index >= nums.length) {
+            subsets.add(new ArrayList<>(subset));
+            return;
+        }
+        // Take
+        subset.add(nums[index]);
+        generateSubset(index + 1, nums, subset, subsets);
+
+
+        // Don't take it
+        subset.remove(subset.size() - 1);
+        generateSubset(index + 1, nums, subset, subsets);
+    }
 }
