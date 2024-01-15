@@ -49,4 +49,10 @@ public class Leetcode78 {
         subset.remove(subset.size() - 1);
         generateSubset(index + 1, nums, subset, subsets);
     }
+
+    public static void main(String[] args) {
+        Leetcode78 q = new Leetcode78();
+        List<List<Integer>> subsets = q.subsets(new int[]{1, 2, 3});
+        System.out.println("subsets = " + subsets);
+    }
 }

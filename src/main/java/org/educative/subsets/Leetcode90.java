@@ -13,7 +13,7 @@ public class Leetcode90 {
 
     // TC : O(n * 2^n)
     // SC : O(n * 2^n)
-    public List<List<Integer>> findSubsets(int[] nums) {
+    public List<List<Integer>> findSubsets2(int[] nums) {
         // sort the numbers to handle duplicates
         Arrays.sort(nums);
         List<List<Integer>> subsets = new ArrayList<>();
@@ -34,5 +34,26 @@ public class Leetcode90 {
             }
         }
         return subsets;
+    }
+
+    public List<List<Integer>> findSubsets(int[] nums) {
+        List<List<Integer>> subsets = new ArrayList<>();
+        Arrays.sort(nums);
+        generateCombinations(0, nums, new ArrayList<Integer>(), subsets);
+        return subsets;
+    }
+
+    private void generateCombinations(int index, int[] nums, List<Integer> subset, List<List<Integer>> subsets) {
+
+        subsets.add(new ArrayList<>(subset));
+        for(int i=index; i < nums.length; i++) {
+            if(i != index && nums[i] == nums[i - 1]) continue;
+
+            subset.add(nums[i]);
+            generateCombinations(i + 1, nums, subset, subsets);
+            subset.remove(subset.size() - 1);
+        }
+
+        //generateCombinations(index + 1, nums, subset, subsets);
     }
 }

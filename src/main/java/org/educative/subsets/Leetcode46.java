@@ -1,9 +1,6 @@
 package org.educative.subsets;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 public class Leetcode46 {
     public static void main(String[] args) {
@@ -19,7 +16,7 @@ public class Leetcode46 {
     // We know that there are a total of N! permutations of a set with ‘N’ numbers. In the algorithm above, we are iterating through all of these permutations with the help of the two ‘for’ loops.
     // In each iteration, we go through all the current permutations to insert a new number in them on line 17 (line 23 for C++ solution).
     // To insert a number into a permutation of size ‘N’ will take O(N), which makes the overall time complexity of our algorithm O(N*N!).
-    public List<List<Integer>> findPermutations(int[] nums) {
+    public List<List<Integer>> findPermutations2(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
         int size = nums.length;
 
@@ -45,6 +42,27 @@ public class Leetcode46 {
         }
 
         return result;
+    }
+
+    public List<List<Integer>> findPermutations(int[] nums) {
+        List<List<Integer>> result = new ArrayList<>();
+        generateCombination(nums, new ArrayList<>(), result, new HashSet<>());
+        return result;
+    }
+
+    private void generateCombination(int[] nums, List<Integer> subset, List<List<Integer>> subsets, Set<Integer> visited) {
+        if(subset.size() == nums.length)
+            subsets.add(new ArrayList<>(subset));
+
+        for (int num : nums) {
+            if (!visited.contains(num)) {
+                subset.add(num);
+                visited.add(num);
+                generateCombination(nums, subset, subsets, visited);
+                subset.remove(subset.size() - 1);
+                visited.remove(num);
+            }
+        }
     }
 
     public List<List<Character>> findPossibleCharSequences(String str){
