@@ -1,4 +1,4 @@
-package org.educative.subsets.practice;
+package org.educative.backtracking.practice;
 
 import java.util.ArrayList;
 import java.util.HashMap;

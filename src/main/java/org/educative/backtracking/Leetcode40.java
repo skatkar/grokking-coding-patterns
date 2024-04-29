@@ -1,4 +1,4 @@
-package org.educative.subsets;
+package org.educative.backtracking;
 
 import java.util.ArrayList;
 import java.util.Arrays;
