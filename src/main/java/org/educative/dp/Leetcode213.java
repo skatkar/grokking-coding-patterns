@@ -17,6 +17,8 @@ public class Leetcode213 {
             if(i != n - 1) excludeLast.add(nums[i]);
         }
 
+        // First and last can't be considered at a time
+        // Get the max from excluding the first or excluding the last
         return Math.max(
                 helper(excludeFirst.stream().mapToInt(Integer::intValue).toArray()),
                 helper(excludeLast.stream().mapToInt(Integer::intValue).toArray()));
