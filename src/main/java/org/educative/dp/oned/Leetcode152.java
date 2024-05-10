@@ -1,4 +1,4 @@
-package org.educative.dp;
+package org.educative.dp.oned;
 
 public class Leetcode152 {
     // Reference - https://www.youtube.com/watch?v=lXVy6YWFcRM

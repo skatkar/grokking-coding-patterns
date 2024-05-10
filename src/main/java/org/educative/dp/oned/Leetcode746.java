@@ -1,4 +1,4 @@
-package org.educative.dp;
+package org.educative.dp.oned;
 
 import java.util.Arrays;
 
