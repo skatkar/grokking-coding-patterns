@@ -12,7 +12,8 @@ public class SubsetSumK {
             dp[row][0] = true;
         }
 
-        // Initialize the first column of the DP table
+        // We can achieve the expected sum only at a[0]th index
+        // Means if we are at 0th index and the target sum would be possible for a[0]th
         // if(index == 0) return arr[index] == target; condition
         if (arr[0] <= k) {
             dp[0][arr[0]] = true;
