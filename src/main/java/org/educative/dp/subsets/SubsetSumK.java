@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class SubsetSumK {
 
     public static boolean subsetSumToK(int n, int k, int[] arr){
-        boolean[][] dp = new boolean[n][k + 1];
+        boolean[][] dp = new boolean[n][k + 1]; // Target sum from 0 to k
 
         // Convert the recursion base cases - (target == 0) condition
         for(int row=0; row < n; row++){
