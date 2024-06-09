@@ -18,7 +18,8 @@ public class Leetcode542 {
     }
 
     // BFS would help here as we will be moving level by level
-    // DFS does not fit as it will go to the depth and will come back.So,even though we are closer, we won't be tracking the distance
+    // DFS does not fit as it will go to the depth and will come back.
+    // So,even though we are closer, we won't be tracking the shortest distance which is possible in BFS
     public int[][] updateMatrix(int[][] mat) {
         int rows = mat.length;
         int columns = mat[0].length;
