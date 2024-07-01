@@ -45,11 +45,11 @@ public class Leetcode1143 {
         if(memo[index1][index2] != -1) return memo[index1][index2];
 
         if(text1.charAt(index1) == text2.charAt(index2))
-            return 1 + recursion(index1 - 1, index2 - 1, text1, text2);
+            return 1 + memoization(index1 - 1, index2 - 1, text1, text2,memo);
 
         // If no match, then decrement the index in text1
-        int left = recursion(index1 - 1, index2, text1, text2);
-        int right = recursion(index1, index2 - 1, text1, text2);
+        int left = memoization(index1 - 1, index2, text1, text2, memo);
+        int right = memoization(index1, index2 - 1, text1, text2, memo);
 
         memo[index1][index2] = Math.max(left, right);
 
