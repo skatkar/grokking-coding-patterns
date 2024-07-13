@@ -26,7 +26,51 @@ public class Leetcode787 {
         System.out.println("cheapestPrice = " + cheapestPrice);
     }
 
+    // Using no. of stop as a first criteria and then using distance as a second criteris
+    // No need to use a priority queue as each new element getting added will be having +1 stop
     public int findCheapestPrice(int n, int[][] flights, int src, int dst, int k) {
+        // Generate an adjacency list
+        List<List<Pair>> adj = new ArrayList<>();
+        for(int i=0; i < n; i++) {
+            adj.add(new ArrayList<>());
+        }
+
+        for(int[] flight : flights) {
+            adj.get(flight[0]).add(new Pair(flight[2], flight[1]));
+        }
+
+        // Maintaining the shortest distance to each city
+        int[] distance = new int[n];
+        Arrays.fill(distance, (int) 1e9);
+
+        // 0 - stops
+        // 1 - Node
+        // 2 - distance
+        Queue<int[]> queue = new LinkedList<>();
+        queue.add(new int[]{0, src, 0});
+
+        while(!queue.isEmpty()) {
+            int[] tuple = queue.poll();
+
+            int stops = tuple[0];
+            int node = tuple[1];
+            int currDist = tuple[2];
+
+            if(stops > k) continue;
+
+            for(Pair neighbor : adj.get(node)) {
+                if(currDist + neighbor.cost < distance[neighbor.node] && stops <= k){
+                    distance[neighbor.node] = currDist + neighbor.cost;
+                    queue.add(new int[]{stops + 1, neighbor.node, currDist + neighbor.cost});
+                }
+            }
+        }
+
+        if(distance[dst] == (int)1e9) return -1;
+        return distance[dst];
+    }
+
+    public int findCheapestPrice2(int n, int[][] flights, int src, int dst, int k) {
         Map<Integer, List<Pair>> map = new HashMap<>();
         for(int[] flight : flights){
             map.putIfAbsent(flight[0], new ArrayList<>());
