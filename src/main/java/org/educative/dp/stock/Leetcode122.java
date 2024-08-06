@@ -17,23 +17,20 @@ public class Leetcode122 {
         int rows = prices.length;
         int[][] dp = new int[rows + 1][2];
         for(int i=0; i < 2; i ++) {
-            dp[prices.length][i] = 0;
+            dp[rows][i] = 0;
         }
 
-        for(int i=rows; i >= 0 ; i--) {
-            for(int j=0; j < 2; j++) {
-                if(j == 1) {
-                    int pick = -prices[i - 1] + dp[i + 1][0];
-                    int notPick = dp[i + 1][1];
-                    dp[i][j] = Math.max(pick, notPick);
-                }else {
-                    int pick = prices[i - 1] + dp[i + 1][1];
-                    int notPick = dp[i + 1][0];
-                    dp[i][j] = Math.max(pick, notPick);
+        for(int i=rows - 1; i >= 0 ; i--) {
+            for(int buy=0; buy < 2; buy++) {
+                if(buy == 0) { // buy the stock
+                    dp[i][buy] = Math.max(dp[i + 1][0], -prices[i] + dp[i + 1][1]);
+                }else { // sell the stock
+                    dp[i][buy] = Math.max(dp[i + 1][1], prices[i] + dp[i + 1][0]);
                 }
             }
         }
 
+        // here we started the recursion so returning the value at this index as an answer
         return dp[0][0];
     }
 

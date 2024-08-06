@@ -4,11 +4,16 @@ import java.util.Arrays;
 
 public class PartitionSumDiffK {
 
-    // https://www.naukri.com/code360/problems/partition-a-set-into-two-subsets-such-that-the-difference-of-subset-sums-is-minimum_842494?source=youtube&campaign=striver_dp_videos&utm_source=youtube&utm_medium=affiliate&utm_campaign=striver_dp_videos
-    // The first half is exactly the same as previous problems in this category
-    // The second half reuses the dp array we calculated.
-    // The last row tells if we are standing at the last index, can we achieve the kth index as a target or not.
-    // Use this kth target sum as a first subarray sum. Total sum - this sum would be the second subarray sum.
+    /**
+     * Link :
+     * <a href="https://www.naukri.com/code360/problems/partition-a-set-into-two-subsets-such-that-the-difference-of-subset-sums-is-minimum_842494?source=youtube&campaign=striver_dp_videos&utm_source=youtube&utm_medium=affiliate&utm_campaign=striver_dp_videos">...</a>
+     *     The first half is exactly the same as previous problems in this category
+     *     The second half reuses the dp array we calculated.
+     *     The last row tells if we are standing at the last index, can we achieve the kth index as a target or not.
+     *     Use this kth target sum as a first subarray sum.
+     *     Total sum - this sum would be the second subarray sum.
+     *
+     */
     public static int minSubsetSumDifference(int []arr, int n) {
         int totalSum = Arrays.stream(arr).sum();
 
@@ -40,6 +45,8 @@ public class PartitionSumDiffK {
             }
         }
 
+        // The last row signify that if we passed through all the elements of of a given array
+        // is there a subset having a specific sum.This sum is nothing but the column number
 
         /* The second half starts here */
         int min = Integer.MAX_VALUE;

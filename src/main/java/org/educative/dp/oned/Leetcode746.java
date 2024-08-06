@@ -7,7 +7,9 @@ public class Leetcode746 {
         int n = cost.length;
         int[] memo = new int[n];
         Arrays.fill(memo, -1);
-        return Math.min(helper(n - 1, cost, memo), helper(n - 1, cost, memo));
+
+        // We can get the min cost either due to 1 step jump or 2 step jump
+        return Math.min(helper(n - 1, cost, memo), helper(n - 2, cost, memo));
     }
 
     private int helper(int index, int[] cost, int[] memo) {
@@ -16,8 +18,9 @@ public class Leetcode746 {
 
         if(memo[index] != -1) return memo[index];
 
-        memo[index] = cost[index] + helper(index - 1, cost, memo) +
-                helper(index - 2, cost, memo);
+        memo[index] = cost[index] + Math.min(
+                helper(index - 1, cost, memo),
+                helper(index - 2, cost, memo));
         return memo[index];
     }
 

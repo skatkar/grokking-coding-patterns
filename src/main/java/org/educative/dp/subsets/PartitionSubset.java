@@ -3,6 +3,13 @@ package org.educative.dp.subsets;
 import java.util.Arrays;
 
 public class PartitionSubset {
+
+    /**
+     * Link : <a href="https://www.naukri.com/code360/problems/partition-equal-subset-sum_892980?source=youtube&campaign=striver_dp_videos&utm_source=youtube&utm_medium=affiliate&utm_campaign=striver_dp_videos">...</a>
+     * @param arr
+     * @param n
+     * @return
+     */
     public static boolean canPartition(int[] arr, int n) {
         int totalSum = Arrays.stream(arr).sum();
         // If the sum is odd then it is not possible to find two subsets having the same sum.
