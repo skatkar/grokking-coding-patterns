@@ -1,4 +1,4 @@
-package org.educative.unionfind;
+package org.educative.graph.unionfind;
 
 import java.util.HashMap;
 import java.util.Map;

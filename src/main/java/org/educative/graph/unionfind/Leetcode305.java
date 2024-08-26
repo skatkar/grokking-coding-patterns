@@ -1,4 +1,4 @@
-package org.educative.unionfind;
+package org.educative.graph.unionfind;
 
 import java.util.ArrayList;
 import java.util.List;
