@@ -22,6 +22,19 @@ public class Leetcode947 {
         return stones.length - uf.getNumComponents();
     }
 
+    public static void main(String[] args) {
+        Leetcode947 q = new Leetcode947();
+        int removedStones = q.removeStones(new int[][]{
+                {0, 0},
+                {0, 1},
+                {1, 0},
+                {1, 2},
+                {2, 1},
+                {2, 2}
+        });
+        System.out.println(removedStones);
+    }
+
     // This is just copy-paste:
     // Standard Union-Find implementation (weighted unions, path compression).
     // This is the best UF implementation that you should always be using (UF + weighted + path compression):  https://algs4.cs.princeton.edu/15uf/WeightedQuickUnionPathCompressionUF.java.html
@@ -75,5 +88,6 @@ public class Leetcode947 {
         public int getNumComponents() {
             return numComponents;
         }
+
     }
 }

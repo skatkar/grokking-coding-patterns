@@ -19,6 +19,8 @@ public class Leetcode721 {
         Map<String, Integer> emailMap = new HashMap<>();
         UnionFind uf = new UnionFind(accounts);
 
+        // Step 1 - Do Union find.
+        // Accounts having email addresses in common will be grouped here.
         for(int accountIndex=0; accountIndex < accounts.size();accountIndex++){
             List<String> account = accounts.get(accountIndex);
             for(int emailAddressIndex=1; emailAddressIndex < account.size();emailAddressIndex++) {
