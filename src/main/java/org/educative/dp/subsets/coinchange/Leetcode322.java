@@ -1,4 +1,4 @@
-package org.educative.dp.subsets;
+package org.educative.dp.subsets.coinchange;
 
 public class Leetcode322 {
     public int coinChange(int[] coins, int amount) {

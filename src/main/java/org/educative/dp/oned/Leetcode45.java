@@ -27,6 +27,10 @@ public class Leetcode45 {
             int minJumps = countMinJumpsRecursive(memo, jumps, start++);
             if(minJumps != Integer.MAX_VALUE)
                 // Because at the last index we took jump 0. But from the previous index we took 1 jump to reach the last index. So adding 1.
+                // As we know, every index within the range of current index can be reached in one jump.
+                // Therefore, we can say that we can reach every index (within the range of current index) in:
+                //
+                //    'jumps to reach current index' + 1
                 totalJumps = Math.min(totalJumps, minJumps + 1);
         }
         memo[currentIndex] = totalJumps;
