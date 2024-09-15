@@ -38,13 +38,12 @@ public class CoinChange {
         }
 
         for(int index = 1; index <= n; index++){
-            for(int currTotal=1; currTotal <= total; currTotal++){
+            for(int currTotal = 1; currTotal <= total; currTotal++){
                 int notPick = dp[index - 1][currTotal];
                 int pick = 0;
                 if(denominations[index - 1] <= currTotal){
                     pick = dp[index][currTotal - denominations[index - 1]];
                 }
-
                 dp[index][currTotal] = pick + notPick;
             }
         }
