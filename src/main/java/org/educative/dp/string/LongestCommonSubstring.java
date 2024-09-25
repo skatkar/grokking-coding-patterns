@@ -2,6 +2,17 @@ package org.educative.dp.string;
 
 public class LongestCommonSubstring {
 
+    public static void main(String[] args) {
+        LongestCommonSubstring q = new LongestCommonSubstring();
+        q.findLPSLength("cddpd");
+    }
+
+    public int findLPSLength(String st) {
+        StringBuilder sb = new StringBuilder(st);
+        int n = st.length();
+        return commonSubStr(st, sb.reverse().toString(), n, n);
+    }
+
     /**
      * This is based on Leetcode 1143.
      * @param X - First string
@@ -24,6 +35,16 @@ public class LongestCommonSubstring {
                 }
             }
         }
+        display(dp);
         return maxLength;
+    }
+
+    private void display(int[][] dp) {
+        for (int[] ints : dp) {
+            for (int j = 0; j < dp[0].length; j++) {
+                System.out.print(ints[j] + " ");
+            }
+            System.out.println();
+        }
     }
 }

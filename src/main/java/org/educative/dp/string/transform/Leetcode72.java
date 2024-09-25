@@ -1,4 +1,4 @@
-package org.educative.dp.string;
+package org.educative.dp.string.transform;
 
 public class Leetcode72 {
     public int minDistance(String word1, String word2) {
