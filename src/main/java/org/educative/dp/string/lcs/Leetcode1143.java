@@ -1,4 +1,4 @@
-package org.educative.dp.string;
+package org.educative.dp.string.lcs;
 
 public class Leetcode1143 {
 
