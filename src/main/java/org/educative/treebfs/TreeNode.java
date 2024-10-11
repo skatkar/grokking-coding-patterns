@@ -1,11 +1,11 @@
 package org.educative.treebfs;
 
 public class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
+    public int val;
+    public TreeNode left;
+    public TreeNode right;
 
-    TreeNode next;
+    public TreeNode next;
 
     TreeNode(int x) {
         val = x;
