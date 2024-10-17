@@ -44,6 +44,13 @@ public class Leetcode1376 {
         }
     }
 
+    /**
+     *
+     * @param adj
+     * @param curr
+     * @param informTime
+     * @param time - Time needed to reach the current employee. Initialized with 0 for the headId
+     */
     private void dfsRecursive(Map<Integer, List<Integer>> adj, int curr, int[] informTime, int time) {
         totalTime = Math.max(totalTime, time);
         List<Integer> subs = adj.get(curr);
