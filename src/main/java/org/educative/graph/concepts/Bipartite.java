@@ -4,7 +4,22 @@ import java.util.Arrays;
 
 public class Bipartite {
     int[] colors;
+
     public boolean isBipartite(int[][] graph) {
+        int nodes = graph.length;
+        UnionFind uf = new UnionFind(nodes);
+        for(int node=0; node < graph.length; node++) {
+            for(int neighbor =0; neighbor < graph[node].length;  neighbor++) {
+                if(uf.isConnected(node, graph[node][neighbor]))
+                    return false;
+                uf.union(graph[node][0], graph[node][neighbor]);
+            }
+        }
+
+        return true;
+    }
+
+    public boolean isBipartite_DFS(int[][] graph) {
         if(graph == null || graph.length == 0) return false;
 
         int n = graph.length;
@@ -18,6 +33,44 @@ public class Bipartite {
             }
         }
         return true;
+    }
+
+    class UnionFind {
+        int[] parent;
+        int[] rank;
+
+        public UnionFind(int size) {
+            parent = new int[size];
+            for(int i=0; i < size; i++) {
+                parent[i] = i;
+            }
+            rank = new int[size];
+        }
+
+        private int find(int node) {
+            if(parent[node] == node)
+                return node;
+            parent[node] = find(parent[node]);
+            return parent[node];
+        }
+
+        private void union(int nodeA, int nodeB) {
+            int parentA = find(nodeA);
+            int parentB = find(nodeB);
+
+            if(rank[parentB] < rank[parentA]) {
+                parent[parentB] = parentA;
+            }else if(rank[parentA] < rank[parentB]) {
+                parent[parentA] = parentB;
+            }else {
+                parent[parentB] = parentA;
+                rank[parentA]++;
+            }
+        }
+
+        private boolean isConnected(int nodeA, int nodeB) {
+            return find(nodeA) == find(nodeB);
+        }
     }
 
     private boolean visited(int[][] graph, int node, int color) {
