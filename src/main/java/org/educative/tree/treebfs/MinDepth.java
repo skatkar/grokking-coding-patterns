@@ -1,11 +1,11 @@
-package org.educative.treebfs;
+package org.educative.tree.treebfs;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class LevelOrderSuccessor {
+public class MinDepth {
     public static void main(String[] args) {
-        LevelOrderSuccessor question = new LevelOrderSuccessor();
+        MinDepth question = new MinDepth();
 
         TreeNode root = new TreeNode(1);
         root.left = new TreeNode(2);
@@ -14,30 +14,31 @@ public class LevelOrderSuccessor {
 
         root.right = new TreeNode(3);
 
-
-        TreeNode successor = question.findSuccessor(root, 3);
-        System.out.println("successor.val = " + successor.val);
+        int depth = question.findDepth(root);
+        System.out.println("depth = " + depth);
     }
 
-    public TreeNode findSuccessor(TreeNode root, int key) {
+    public int findDepth(TreeNode root) {
+        if(root == null) return 0;
+
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
 
-        TreeNode result = null;
-
-        while(!queue.isEmpty()) {
+        int depth = 0;
+        while (!queue.isEmpty()){
+            depth++;
             int size = queue.size();
 
             for(int i=0; i < size; i++) {
                 TreeNode current = queue.poll();
+                if(current.left == null && current.right == null)
+                    return depth;
 
                 if(current.left != null) queue.add(current.left);
                 if(current.right != null) queue.add(current.right);
-
-                if(current.val == key) return queue.peek();
             }
         }
 
-        return result;
+        return 0;
     }
 }

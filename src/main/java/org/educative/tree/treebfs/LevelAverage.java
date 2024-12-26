@@ -1,11 +1,12 @@
-package org.educative.treebfs;
+package org.educative.tree.treebfs;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
-public class MinDepth {
+public class LevelAverage {
     public static void main(String[] args) {
-        MinDepth question = new MinDepth();
+        LevelAverage question = new LevelAverage();
 
         TreeNode root = new TreeNode(1);
         root.left = new TreeNode(2);
@@ -13,32 +14,36 @@ public class MinDepth {
         root.left.right = new TreeNode(5);
 
         root.right = new TreeNode(3);
+        root.right.left = new TreeNode(6);
+        root.right.right = new TreeNode(7);
 
-        int depth = question.findDepth(root);
-        System.out.println("depth = " + depth);
+        List<Double> levelAverages = question.findLevelAverages(root);
+        levelAverages.forEach(System.out::println);
     }
 
-    public int findDepth(TreeNode root) {
-        if(root == null) return 0;
+    public List<Double> findLevelAverages(TreeNode root) {
+        List<Double> result = new LinkedList<>();
 
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
 
-        int depth = 0;
-        while (!queue.isEmpty()){
-            depth++;
+        while(!queue.isEmpty()) {
             int size = queue.size();
+
+            double levelSum = 0.0;
 
             for(int i=0; i < size; i++) {
                 TreeNode current = queue.poll();
-                if(current.left == null && current.right == null)
-                    return depth;
 
+                levelSum += current.val;
                 if(current.left != null) queue.add(current.left);
                 if(current.right != null) queue.add(current.right);
+
             }
+
+            result.add(levelSum / size);
         }
 
-        return 0;
+        return result;
     }
 }
