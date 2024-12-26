@@ -1,4 +1,4 @@
-package org.educative.tree.treebfs.practice;
+package org.educative.tree.bfs.practice;
 
 import java.util.LinkedList;
 import java.util.Queue;

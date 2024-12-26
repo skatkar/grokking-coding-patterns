@@ -1,6 +1,6 @@
 package org.educative.graph.traversal.bfs;
 
-import org.educative.tree.treebfs.TreeNode;
+import org.educative.tree.bfs.TreeNode;
 
 import java.util.*;
 

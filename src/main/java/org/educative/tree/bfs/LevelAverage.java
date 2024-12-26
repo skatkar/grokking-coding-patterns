@@ -1,11 +1,12 @@
-package org.educative.tree.treebfs;
+package org.educative.tree.bfs;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
-public class LevelOrderSuccessor {
+public class LevelAverage {
     public static void main(String[] args) {
-        LevelOrderSuccessor question = new LevelOrderSuccessor();
+        LevelAverage question = new LevelAverage();
 
         TreeNode root = new TreeNode(1);
         root.left = new TreeNode(2);
@@ -13,29 +14,34 @@ public class LevelOrderSuccessor {
         root.left.right = new TreeNode(5);
 
         root.right = new TreeNode(3);
+        root.right.left = new TreeNode(6);
+        root.right.right = new TreeNode(7);
 
-
-        TreeNode successor = question.findSuccessor(root, 3);
-        System.out.println("successor.val = " + successor.val);
+        List<Double> levelAverages = question.findLevelAverages(root);
+        levelAverages.forEach(System.out::println);
     }
 
-    public TreeNode findSuccessor(TreeNode root, int key) {
+    public List<Double> findLevelAverages(TreeNode root) {
+        List<Double> result = new LinkedList<>();
+
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
-
-        TreeNode result = null;
 
         while(!queue.isEmpty()) {
             int size = queue.size();
 
+            double levelSum = 0.0;
+
             for(int i=0; i < size; i++) {
                 TreeNode current = queue.poll();
 
+                levelSum += current.val;
                 if(current.left != null) queue.add(current.left);
                 if(current.right != null) queue.add(current.right);
 
-                if(current.val == key) return queue.peek();
             }
+
+            result.add(levelSum / size);
         }
 
         return result;

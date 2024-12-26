@@ -1,6 +1,6 @@
 package org.educative.treedfs;
 
-import org.educative.tree.treebfs.TreeNode;
+import org.educative.tree.bfs.TreeNode;
 
 /**
  * Question : Leetcode 1430

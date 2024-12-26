@@ -1,4 +1,4 @@
-package org.educative.tree.treebfs;
+package org.educative.tree.bfs;
 
 public class TreeNode {
     public int val;

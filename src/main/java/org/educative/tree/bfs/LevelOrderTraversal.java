@@ -1,12 +1,10 @@
-package org.educative.tree.treebfs;
+package org.educative.tree.bfs;
 
 import java.util.*;
 
-public class ZigZagTraversal {
-
+public class LevelOrderTraversal {
     public static void main(String[] args) {
-        ZigZagTraversal question = new ZigZagTraversal();
-
+        LevelOrderTraversal question = new LevelOrderTraversal();
         TreeNode root = new TreeNode(1);
         root.left = new TreeNode(2);
         root.left.left = new TreeNode(4);
@@ -16,20 +14,25 @@ public class ZigZagTraversal {
         root.right.left = new TreeNode(6);
         root.right.right = new TreeNode(7);
 
+        System.out.println(" *************** ");
         List<List<Integer>> traverse = question.traverse(root);
         traverse.forEach(System.out::println);
 
-        List<List<Integer>> traverse2 = question.traverse2(root);
-        traverse2.forEach(System.out::println);
+        System.out.println(" *************** ");
+        List<List<Integer>> reverseTraverse = question.reverseLevelTraverse(root);
+        reverseTraverse.forEach(System.out::println);
+
+        System.out.println(" *************** ");
+        List<List<Integer>> reversedTraverse = question.reverseTraverse(root);
+        reversedTraverse.forEach(System.out::println);
     }
 
     public List<List<Integer>> traverse(TreeNode root) {
-        List<List<Integer>> result = new LinkedList<List<Integer>>();
+        List<List<Integer>> result = new ArrayList<>();
 
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
 
-        int qLevel = 0;
         while(!queue.isEmpty()) {
             int size = queue.size();
 
@@ -44,20 +47,18 @@ public class ZigZagTraversal {
 
             }
 
-            if(qLevel++ % 2 != 0) Collections.reverse(level);
             result.add(level);
         }
 
         return result;
     }
 
-    public List<List<Integer>> traverse2(TreeNode root) {
-        List<List<Integer>> result = new LinkedList<List<Integer>>();
+    public List<List<Integer>> reverseLevelTraverse(TreeNode root) {
+        List<List<Integer>> result = new ArrayList<>();
 
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
 
-        boolean leftToRight = true;
         while(!queue.isEmpty()) {
             int size = queue.size();
 
@@ -66,16 +67,38 @@ public class ZigZagTraversal {
             for(int i=0; i < size; i++) {
                 TreeNode current = queue.poll();
 
-                if(leftToRight) level.add(current.val);
-                else level.add(0, current.val);
-
+                level.add(current.val);
                 if(current.left != null) queue.add(current.left);
                 if(current.right != null) queue.add(current.right);
 
             }
-
-            leftToRight = !leftToRight;
+            Collections.reverse(level);
             result.add(level);
+        }
+
+        return result;
+    }
+
+    public List<List<Integer>> reverseTraverse(TreeNode root) {
+        List<List<Integer>> result = new ArrayList<>();
+
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+
+        while(!queue.isEmpty()) {
+            int size = queue.size();
+
+            List<Integer> level = new ArrayList<>();
+
+            for(int i=0; i < size; i++) {
+                TreeNode current = queue.poll();
+
+                level.add(current.val);
+                if(current.left != null) queue.add(current.left);
+                if(current.right != null) queue.add(current.right);
+
+            }
+            result.add(0,level);
         }
 
         return result;
