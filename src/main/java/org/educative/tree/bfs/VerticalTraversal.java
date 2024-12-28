@@ -50,8 +50,10 @@ public class VerticalTraversal {
             list.add(current.node.val);
             valsByColumn.put(current.col, list);
 
-            if(current.node.left != null) queue.add(new Element(current.row + 1, current.col- 1, current.node.left));
-            if(current.node.right != null) queue.add(new Element(current.row + 1,  current.col + 1, current.node.right));
+            if(current.node.left != null)
+                queue.add(new Element(current.row + 1, current.col- 1, current.node.left));
+            if(current.node.right != null)
+                queue.add(new Element(current.row + 1,  current.col + 1, current.node.right));
         }
 
         valsByColumn.forEach((k,v) -> result.add(v));
