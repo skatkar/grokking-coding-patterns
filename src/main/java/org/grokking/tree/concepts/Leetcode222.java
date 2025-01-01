@@ -9,6 +9,8 @@ public class Leetcode222 {
     public int countNodes(TreeNode root) {
         if(root == null) return 0;
 
+        // Since this is a complete binary tree, we'll see if left and right heights are same or not
+        // If not that means, some nodes must be missing on the right side as nodes are filled from left.
         int leftHeight = getLeftHeight(root);
         int rightHeight = getRightHeight(root);
 
