@@ -1,4 +1,4 @@
-package org.grokking.tree.concepts;
+package org.grokking.tree.bst;
 
 import org.grokking.tree.bfs.TreeNode;
 
