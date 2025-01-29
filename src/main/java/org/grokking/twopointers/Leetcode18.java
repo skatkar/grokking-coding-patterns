@@ -10,12 +10,15 @@ public class Leetcode18 {
         return kSum(nums, 0, 4, target);
     }
 
-    // Make the target as null. One of the test cases was failing for int data type
+    // Make the target as long.
+    // One of the test cases was failing for int data type
     private List<List<Integer>> kSum(int[] nums, int start, int k, long target) {
         int len = nums.length;
         List<List<Integer>> res = new ArrayList<List<Integer>>();
         if (k == 2) { // two pointers from left and right
             int left = start, right = len - 1;
+
+            // This is exactly similar to 3-sum problem
             while (left < right) {
                 int sum = nums[left] + nums[right];
                 if (sum == target) {
@@ -36,6 +39,7 @@ public class Leetcode18 {
                 }
             }
         } else {
+            // reduce it to 2-sum problem
             for (int i = start; i < len - (k - 1); i++) {
                 if (i > start && nums[i] == nums[i - 1])
                     continue;
