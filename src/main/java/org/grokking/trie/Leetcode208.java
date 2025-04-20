@@ -37,7 +37,7 @@ class Trie {
     public boolean search(String word) {
         TrieNode curr = root;
         for(char ch : word.toCharArray()) {
-            if(curr.children[ch = 'a'] == null){
+            if(curr.children[ch - 'a'] == null){
                 return false;
             }
 
@@ -55,7 +55,7 @@ class Trie {
     public boolean startsWith(String prefix) {
         TrieNode curr = root;
         for(char ch : prefix.toCharArray()) {
-            if(curr.children[ch = 'a'] == null){
+            if(curr.children[ch - 'a'] == null){
                 return false;
             }
 
