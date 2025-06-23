@@ -8,7 +8,7 @@ import java.util.Map;
 public class Leetcode17 {
     public static void main(String[] args) {
         Leetcode17 q = new Leetcode17();
-        List<String> answer = q.letterCombinations("234");
+        List<String> answer = q.letterCombinations("23");
         System.out.println("answer = " + answer);
     }
 
