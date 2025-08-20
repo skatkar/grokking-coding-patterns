@@ -37,4 +37,9 @@ public class Leetcode875 {
 
         return totalTime;
     }
+
+    public static void main(String[] args) {
+        Leetcode875 q = new Leetcode875();
+        q.minEatingSpeed(new int[]{3,6,7,11}, 8);
+    }
 }
