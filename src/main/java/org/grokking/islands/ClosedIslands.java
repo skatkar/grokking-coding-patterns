@@ -52,4 +52,28 @@ public class ClosedIslands {
 
         return isClosed;
     }
+
+    // DFS returns false if ANY part touches the boundary
+    private boolean dfs(int[][] grid, int r, int c, boolean[][] visited) {
+        // If we step outside, this island is NOT closed
+        if (r < 0 || r >= grid.length || c < 0 || c >= grid[0].length) {
+            return false;
+        }
+
+        // Water (1) or already visited — safe stop, but does not break closed-ness
+        if (grid[r][c] == 1 || visited[r][c]) {
+            return true;
+        }
+
+        visited[r][c] = true;
+
+        // Explore all 4 directions
+        boolean down  = dfs(grid, r + 1, c, visited);
+        boolean up    = dfs(grid, r - 1, c, visited);
+        boolean right = dfs(grid, r, c + 1, visited);
+        boolean left  = dfs(grid, r, c - 1, visited);
+
+        // Island is closed only if ALL 4 sides are closed
+        return down && up && right && left;
+    }
 }
