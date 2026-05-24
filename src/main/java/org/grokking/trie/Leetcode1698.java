@@ -1,14 +1,9 @@
 package org.grokking.trie;
 
 public class Leetcode1698 {
-    public int countDistinct(String s) {
-        Trie trie = new Trie();
-        int distinctStrings = 0;
-        for(int i=0; i < s.length(); i++) {
-            distinctStrings += trie.insert(s.substring(i));
-        }
-
-        return distinctStrings;
+    public static void main(String[] args) {
+        Leetcode1698 q = new Leetcode1698();
+        q.countDistinct("aabbaba");
     }
 
     class TrieNode {
@@ -38,5 +33,16 @@ public class Leetcode1698 {
             }
             return count;
         }
+    }
+
+    public int countDistinct(String s) {
+        Trie trie = new Trie();
+        int distinctStrings = 0;
+        for(int i=0; i < s.length(); i++) {
+            String substr = s.substring(i);
+            distinctStrings += trie.insert(substr);
+        }
+
+        return distinctStrings;
     }
 }
