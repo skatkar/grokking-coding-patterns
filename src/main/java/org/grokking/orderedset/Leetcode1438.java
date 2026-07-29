@@ -4,7 +4,8 @@ import java.util.TreeSet;
 
 public class Leetcode1438 {
     public int longestSubarray(int[] nums, int limit) {
-        // Create a treeSet of the indexes. If they are same then sort based on the number they are pointing to.
+        // Ascending order sorting based on the values in nums.
+        // If both indexes are pointing to the same value, then sort them by the index
         TreeSet<Integer> treeSet = new TreeSet<>(
                 (a,b) -> nums[a] == nums[b] ? a - b : nums[a] - nums[b]
         );
